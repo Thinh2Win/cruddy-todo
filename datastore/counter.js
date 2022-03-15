@@ -41,9 +41,10 @@ exports.getNextUniqueId = (callback) => {
   readCounter( (a, b) => {
     writeCounter(b + 1, (err, d) => {
       if (err) {
-        throw ('whoa an error');
+        console.log('error getting next unique id');
+        callback(null, 0);
       } else {
-        callback(zeroPaddedNumber(d));
+        callback(null, zeroPaddedNumber(d));
       }
     });
   });
